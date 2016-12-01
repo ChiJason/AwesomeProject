@@ -9,11 +9,8 @@ import Styles from './Styles';
 import InputButton from './InputButton';
 import {
   AppRegistry,
-  StyleSheet,
   Text,
-  View,
-  Button,
-  Alert
+  View
 } from 'react-native';
 
 const inputButtons = [
@@ -23,11 +20,21 @@ const inputButtons = [
   [0,'.','=','+']
 ];
 
-export default class AwesomeProject extends Component {
+class AwesomeProject extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      inputValue:0
+    };
+  }
+
   render() {
     return (
       <View style={Styles.container}>
-        <View style={Styles.displayContainer}></View>
+        <View style={Styles.displayContainer}>
+          <Text style={Styles.displayText}>{this.props.inputValue}</Text>
+        </View>
         <View style={Styles.inputContainer}>
           {this._renderInputButtons()}
         </View>
@@ -45,7 +52,9 @@ export default class AwesomeProject extends Component {
                   let input = row[i];
 
                   inputRow.push(
-                      <InputButton value={input} key={r + "-" + i} />
+                      <InputButton value={input}
+                        onPress={this._onInputButtonPressed.bind(this, input)}
+                        key={r + "-" + i} />
                   );
               }
 
@@ -53,6 +62,10 @@ export default class AwesomeProject extends Component {
           }
 
           return views;
+      }
+
+      _onInputButtonPressed(input){
+        alert(input);
       }
 }
 
