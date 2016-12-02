@@ -1,4 +1,6 @@
 
+'use strict';
+
 import {StyleSheet} from 'react-native';
 
 var Styles = StyleSheet.create ({
@@ -36,6 +38,9 @@ var Styles = StyleSheet.create ({
   inputRow: {
     flex:1,
     flexDirection: 'row'
+  },
+  inputButtonHighlighted: {
+    backgroundColor: '#193441'
   }
 });
 export default Styles;
